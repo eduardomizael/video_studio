@@ -76,8 +76,8 @@ def editor(request, video_id=1):
 @require_GET
 def chapters(request, video_id=1):
     if not settings.UI_DEMO:
-        video = get_object_or_404(Video, pk=video_id)
-        return render(request, 'studio/pending.html', {'page': 'chapters', 'page_title': 'Capítulos e legendas', 'record': video})
+        from app.annotations.views import chapters as real_chapters
+        return real_chapters(request, video_id)
     return render(request, 'studio/chapters.html', {'page': 'chapters', 'page_title': 'Capítulos e Legendas', **video_context(video_id)})
 
 @preview_access

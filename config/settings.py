@@ -14,7 +14,7 @@ if UI_DEMO and not DEBUG:
 INSTALLED_APPS = [
     'django.contrib.admin', 'django.contrib.auth', 'django.contrib.contenttypes',
     'django.contrib.sessions', 'django.contrib.messages', 'django.contrib.staticfiles',
-    'app.accounts', 'app.catalog', 'app.studio',
+    'app.accounts', 'app.catalog', 'app.annotations', 'app.studio',
 ]
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware', 'django.contrib.sessions.middleware.SessionMiddleware',

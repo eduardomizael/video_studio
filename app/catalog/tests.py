@@ -206,7 +206,8 @@ class CatalogTests(TestCase):
 
     def test_unimplemented_screens_do_not_display_demo_data(self):
         video = self.create()
-        self.assertContains(self.client.get(reverse('studio:chapters', args=[video.pk])), 'ainda não foi conectada')
+        self.assertContains(self.client.get(reverse('studio:chapters', args=[video.pk])), 'Capítulos e marcações')
+        self.assertContains(self.client.get(reverse('studio:chapters', args=[video.pk])), 'Nenhuma marcação cadastrada')
         self.assertContains(self.client.get(reverse('studio:profile')), 'editor@example.com')
         self.assertNotContains(self.client.get(reverse('studio:components')), 'Lucas Mendes')
 

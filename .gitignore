@@ -1,0 +1,15 @@
+.venv/
+.venv-incomplete/
+node_modules/
+__pycache__/
+*.py[cod]
+.env
+db.sqlite3
+staticfiles/
+.uv-cache/
+.npm-cache/
+docs/stitch/*.html
+docs/stitch/screens.json
+artifacts/
+private_media/
+tmp*/

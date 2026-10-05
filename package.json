@@ -1,0 +1,15 @@
+{
+  "name": "video-studio-ui",
+  "private": true,
+  "scripts": {
+    "build:css": "tailwindcss -i ./static/src/studio.css -o ./static/css/studio.css --minify",
+    "watch:css": "tailwindcss -i ./static/src/studio.css -o ./static/css/studio.css --watch"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "4.3.0",
+    "tailwindcss": "4.3.0"
+  },
+  "dependencies": {
+    "htmx.org": "2.0.4"
+  }
+}

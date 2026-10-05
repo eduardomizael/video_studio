@@ -1,0 +1,9 @@
+[project]
+name = "video-studio"
+version = "0.1.0"
+description = "Interface Django do Video Studio, baseada nos protótipos Stitch."
+requires-python = ">=3.11"
+dependencies = ["Django>=5.2,<5.3", "django-environ>=0.12,<0.13"]
+
+[tool.uv]
+package = false

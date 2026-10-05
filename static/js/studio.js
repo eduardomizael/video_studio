@@ -210,6 +210,7 @@
     }
   });
   document.addEventListener('input', event => {
+    if (event.target.closest('[data-marking-form]')) document.querySelector('[data-marking-save-status]').textContent = 'Alterações não salvas. Salve a marcação para gravar.';
     if (event.target.matches('[data-choice-filter]')) {
       const select = document.getElementById(event.target.dataset.choiceFilter);
       const query = event.target.value.toLocaleLowerCase('pt-BR');

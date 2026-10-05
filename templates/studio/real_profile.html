@@ -1,0 +1,2 @@
+{% extends 'base.html' %}
+{% block content %}<div class="page-heading"><div><div class="eyebrow">CONTA AUTENTICADA</div><h1>Minha conta</h1></div></div><section class="panel"><h2>{{ studio_user.name }}</h2><p>{{ studio_user.email }}</p><p class="muted-text">Contas são administradas pelo Django Admin. Preferências pessoais ainda não são persistidas.</p>{% if request.user.is_staff %}<a class="button secondary" href="{% url 'admin:index' %}">Abrir administração</a>{% endif %}</section>{% endblock %}

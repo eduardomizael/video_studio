@@ -1,0 +1,17 @@
+{% load static %}
+<aside class="sidebar">
+  <a class="brand" aria-label="Studio Workspace" href="{% url 'studio:library' %}"><img src="{% static 'img/logo.svg' %}" alt="" width="30" height="30"><span>Studio Workspace</span></a>
+  <div class="sidebar-label">WORKSPACE</div>
+  <nav aria-label="Navegação principal">
+    <a aria-label="Editor de Vídeo & Metadados" class="nav-item {% if page == 'editor' %}active{% endif %}" {% if page == 'editor' %}aria-current="page"{% endif %} href="{% url 'studio:editor' 1 %}">{% include 'components/icon.html' with name='video' %}<span>Editor de Vídeo & Metadados</span></a>
+    <a aria-label="Biblioteca de Mídia" class="nav-item {% if page == 'library' %}active{% endif %}" {% if page == 'library' %}aria-current="page"{% endif %} href="{% url 'studio:library' %}">{% include 'components/icon.html' with name='grid' %}<span>Biblioteca de Mídia</span></a>
+    <a aria-label="Capítulos e Legendas" class="nav-item {% if page == 'chapters' %}active{% endif %}" {% if page == 'chapters' %}aria-current="page"{% endif %} href="{% url 'studio:chapters' 1 %}">{% include 'components/icon.html' with name='chapters' %}<span>Capítulos e Legendas</span></a>
+    <a aria-label="Perfil & Configurações" class="nav-item {% if page == 'profile' %}active{% endif %}" {% if page == 'profile' %}aria-current="page"{% endif %} href="{% url 'studio:profile' %}">{% include 'components/icon.html' with name='sliders' %}<span>Perfil & Configurações</span></a>
+    <a aria-label="Menus & Notificações" class="nav-item {% if page == 'components' %}active{% endif %}" {% if page == 'components' %}aria-current="page"{% endif %} href="{% url 'studio:components' %}">{% include 'components/icon.html' with name='bell' %}<span>Menus & Notificações</span></a>
+  </nav>
+  <div class="sidebar-bottom">
+    <div class="workspace-status"><span class="status-dot"></span> Studio local <span class="mono">v0.1</span></div>
+    <div class="demo-label">{% if ui_demo %}PRÉVIA DA INTERFACE{% else %}DADOS DE DEMONSTRAÇÃO{% endif %}</div>
+    <p>Explore as telas com dados de exemplo.</p>
+  </div>
+</aside>

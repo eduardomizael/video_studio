@@ -1,0 +1,29 @@
+{% load static %}
+<!doctype html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>{{ page_title|default:'Video Studio' }} · Video Studio</title>
+  <link rel="icon" type="image/svg+xml" href="{% static 'img/logo.svg' %}">
+  <link rel="stylesheet" href="{% static 'css/studio.css' %}">
+  <script src="{% static 'vendor/htmx.min.js' %}" defer></script>
+  <script src="{% static 'js/studio.js' %}" defer></script>
+  <script src="{% static 'js/media-player.js' %}" defer></script>
+</head>
+<body data-page="{{ page }}">
+  <a class="skip-link" href="#main-content">Ir para o conteúdo</a>
+  {% include 'components/icons.html' %}
+  <div class="app-shell">
+    {% if ui_demo %}{% include 'components/sidebar.html' %}{% else %}{% include 'components/real_sidebar.html' %}{% endif %}
+    <div class="workspace">
+      {% if ui_demo %}{% include 'components/header.html' %}{% else %}{% include 'components/real_header.html' %}{% endif %}
+      <main id="main-content" tabindex="-1">{% for message in messages %}<div class="panel save-status" role="status">{{ message }}</div>{% endfor %}{% block content %}{% endblock %}</main>
+    </div>
+  </div>
+  {% if ui_demo %}{% include 'components/dialogs.html' %}{% else %}{% include 'components/real_dialogs.html' %}{% endif %}
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+  {% block extra_scripts %}{% endblock %}
+</body>
+</html>

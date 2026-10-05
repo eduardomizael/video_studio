@@ -1,0 +1,23 @@
+{% load static %}
+<header class="topbar">
+  <form class="global-search" action="{% url 'studio:library' %}" method="get" role="search">
+    {% include 'components/icon.html' with name='search' %}
+    <input type="search" name="q" value="{{ query }}" placeholder="Buscar vídeos, cortes, faixas de áudio e arquivos…" aria-label="Buscar na biblioteca">
+    <kbd>/</kbd>
+  </form>
+  <div class="header-actions">
+    <span class="local-status"><span class="status-dot"></span> Studio Local</span>
+    <div class="popover-anchor">
+      <button type="button" class="icon-button notification-trigger" data-popover="notification-menu" aria-label="Notificações" aria-expanded="false" aria-controls="notification-menu">{% include 'components/icon.html' with name='bell' %}<span class="notification-dot"></span></button>
+      <div id="notification-menu" class="popover notification-popover" hidden>{% include 'components/notifications.html' %}</div>
+    </div>
+    <div class="popover-anchor">
+      <button type="button" class="user-trigger" data-popover="user-menu" aria-label="Menu de {{ studio_user.name }}" aria-expanded="false" aria-controls="user-menu">
+        <img class="avatar" src="{% static 'img/avatar.png' %}" alt="">
+        <span><strong>{{ studio_user.name }}</strong><small>Editor · Studio</small></span>
+        {% include 'components/icon.html' with name='chevron' class='rotate-90' %}
+      </button>
+      <div id="user-menu" class="popover user-popover" hidden>{% include 'components/user_menu.html' %}</div>
+    </div>
+  </div>
+</header>

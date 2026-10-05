@@ -1,0 +1,2 @@
+{% extends 'base.html' %}
+{% block content %}<section class="panel"><h1>{{ page_title }}</h1><p>Esta funcionalidade ainda não foi conectada ao backend.</p>{% if record %}<p>Vídeo: {{ record.title }}</p><a class="button primary" href="{% url 'studio:editor' record.pk %}">Editar metadados</a>{% endif %}<a class="button secondary" href="{% url 'studio:library' %}">Voltar à biblioteca</a></section>{% endblock %}

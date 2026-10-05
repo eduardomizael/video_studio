@@ -1,0 +1,10 @@
+{% load static %}
+<div class="user-menu-summary"><img class="avatar avatar-lg" src="{% static 'img/avatar.png' %}" alt=""><div><strong>{{ studio_user.name }}</strong><small>{{ studio_user.email }}</small><span class="badge green">Editor</span></div></div>
+<div class="availability"><span class="status-dot"></span> Disponível para edição</div>
+<div class="menu-section-label">CONTA & ESPAÇO DE TRABALHO</div>
+<a class="menu-link" href="{% url 'studio:profile' %}">{% include 'components/icon.html' with name='person' %} Meu Perfil & Configurações {% include 'components/icon.html' with name='chevron' %}</a>
+<a class="menu-link" href="{% url 'studio:library' %}">{% include 'components/icon.html' with name='folder' %} Biblioteca de Mídia {% include 'components/icon.html' with name='chevron' %}</a>
+<div class="menu-section-label">PREFERÊNCIAS RÁPIDAS</div>
+<label class="menu-toggle"><span>{% include 'components/icon.html' with name='moon' %} Tema Escuro <small>Interface Studio Obsidian</small></span><input type="checkbox" role="switch" class="switch" checked data-theme-toggle></label>
+<button class="menu-link" type="button" data-dialog="shortcuts-dialog">{% include 'components/icon.html' with name='keyboard' %} Atalhos de Teclado <kbd>?</kbd></button>
+{% if request.user.is_authenticated %}<form method="post" action="{% url 'accounts:logout' %}">{% csrf_token %}<button class="menu-link danger" type="submit">{% include 'components/icon.html' with name='logout' %} Sair da conta</button></form>{% else %}<a class="menu-link" href="{% url 'accounts:login' %}">{% include 'components/icon.html' with name='logout' %} Acessar com uma conta</a>{% endif %}

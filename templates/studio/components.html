@@ -1,0 +1,5 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="page-heading"><div><div class="eyebrow">COMPONENTES DO WORKSPACE</div><h1>Menus & Notificações</h1><p>Os mesmos componentes estão disponíveis no cabeçalho de todas as telas.</p></div><a class="button secondary" href="{% url 'studio:editor' 1 %}">Voltar ao editor {% include 'components/icon.html' with name='chevron' %}</a></div>
+<div class="component-stage"><div class="stage-background" aria-hidden="true"></div><div class="component-preview"><section class="component-notifications panel">{% include 'components/notifications.html' %}</section><section class="component-user panel">{% include 'components/user_menu.html' %}</section></div></div>
+{% endblock %}

@@ -145,9 +145,13 @@ def reinspect(request, video_id):
         video.file_status = file_status(path)
         inspect_video(video, path)
         video.updated_by = request.user
-        video.save()
-    except ValidationError:
-        messages.error(request, 'A referência não está disponível em um local ativo. Confira o caminho e o local.')
+        from django.db import transaction
+        with transaction.atomic():
+            Video.objects.select_for_update().get(pk=video.pk)
+            video.full_clean()
+            video.save()
+    except ValidationError as error:
+        messages.error(request, f'Não foi possível aplicar a inspeção: {error.messages[0]}')
     else:
         messages.info(request, video.inspection_message or 'Inspeção técnica concluída.')
     return redirect('studio:editor', video_id=video.pk)

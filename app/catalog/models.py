@@ -115,6 +115,13 @@ class Video(models.Model):
     def clean(self):
         super().clean()
         self.title = self.title.strip()
+        if self.pk and self.duration_ms is not None:
+            from app.annotations.models import MarcacaoTemporal, SubtitleEntry
+            invalid = MarcacaoTemporal.objects.filter(video_id=self.pk).filter(models.Q(start_ms__gt=self.duration_ms) | models.Q(end_ms__gt=self.duration_ms))
+            if invalid.exists():
+                raise ValidationError({'duration_ms': 'Há marcações além desta duração. Corrija os trechos antes de reduzir a duração ou trocar o arquivo.'})
+            if SubtitleEntry.objects.filter(version__video_id=self.pk, end_ms__gt=self.duration_ms).exists():
+                raise ValidationError({'duration_ms': 'Há legendas além desta duração. Corrija as entradas antes de reduzir a duração ou trocar o arquivo.'})
         if not self.title:
             raise ValidationError({'title': 'Informe o título do vídeo.'})
         if self.local_midia_id:

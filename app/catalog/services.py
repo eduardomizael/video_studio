@@ -33,12 +33,15 @@ def save_video(form, actor):
     path, video.relative_path, video.path_key = resolve_media_path(video.local_midia, video.relative_path)
     video.full_clean()
     video.file_status = file_status(path)
-    if reference_changed or video.duration_source == 'unknown' or previous and previous.file_status != video.file_status:
+    if reference_changed or video.inspection_status == 'pending' or video.duration_source == 'unknown' or previous and previous.file_status != video.file_status:
         inspect_video(video, path)
     if not video.pk:
         video.created_by = actor
     video.updated_by = actor
     with transaction.atomic():
+        if video.pk:
+            Video.objects.select_for_update().get(pk=video.pk)
+        video.full_clean()
         video.save()
         form.save_m2m()
         for name in form.cleaned_data['new_tags']:

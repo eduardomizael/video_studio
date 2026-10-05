@@ -2,6 +2,8 @@
 
 Data: 04/10/2026. Este documento é um levantamento para implementação, não um registro de funcionalidades concluídas.
 
+Os avanços posteriores a este levantamento estão em [BACKEND_CATALOGO.md](BACKEND_CATALOGO.md), [BACKEND_MIDIA.md](BACKEND_MIDIA.md), [BACKEND_MARCACOES.md](BACKEND_MARCACOES.md) e [BACKEND_SRT.md](BACKEND_SRT.md). A seção de estado abaixo retrata a base anterior a esses incrementos.
+
 Base: as cinco telas reconstruídas do Stitch, seus componentes e comportamentos atuais, `REQUISITOS.md` versão 0.2 e `PLANO_IMPLEMENTACAO.md` versão 0.1. Os requisitos continuam sendo a referência de escopo: um controle presente no protótipo não aprova automaticamente uma nova funcionalidade.
 
 ## 1. Estado atual verificado

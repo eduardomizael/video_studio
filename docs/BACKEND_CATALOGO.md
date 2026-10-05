@@ -1,5 +1,7 @@
 # Primeiro incremento do backend: catálogo
 
+Este documento registra o primeiro incremento. A integração posterior de reprodução e inspeção está documentada em [BACKEND_MIDIA.md](BACKEND_MIDIA.md).
+
 Data: 04/10/2026. Escopo executado: modelos do catálogo, cadastro/edição de referências locais, biblioteca persistida e associações. O MVP completo ainda não está concluído.
 
 ## Implementado
